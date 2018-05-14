@@ -2,7 +2,7 @@
 	<h1>HOLA</h1>
 	<%= form_for :user, url: {controller: 'users', action: 'sign_in'} do |f| %>
 		<%=  f.label :user_name %>
-		<%= f.text_area :user_name, class: 'form-control' %>
+		<%= f.text_field :user_name, class: 'form-control' %>
 		<%= f.submit "Entrar", class: 'btn btn-primary' %>
 	<% end %>
 </div>

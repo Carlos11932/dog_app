@@ -1,0 +1,37 @@
+
+<div class="container-fluid" style="background-color:#babec4">
+	<div class="container" style="background-color: #e7e4db; padding: 1%">
+		<%= render partial: "./partials/nav_bar" %>
+		<% if @dog.publisher_id == session[:current_user_name] %>
+			boton borrar
+			boton editar
+		<% end %>
+		<h1 style="text-align: center; color: #474747;"><%= @dog.name%></h1>
+		<div class="row" style="padding-top: 2%">
+			<div class="col-1">
+				hola
+			</div>
+			<div class="col-3">
+				<img src="" width="200px" height="200px">
+			</div>
+			<div class="col-8">
+				<p><%= @dog.birth_date%></p>
+				<p><%= @dog.breed%></p>
+				<p><%= @dog.gender%></p>
+				<p><%= @dog.description%></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-1">
+				hola
+			</div>
+			<div class="col-3">
+				location
+				<img src="" width="200px" height="200px">
+			</div>
+			<div class="col-8">
+				<h4 style="text-align: right; padding-top: 20%"> Contacto: <%= @publisher.name%></h4>
+			</div>
+		</div>
+	</div>
+</div>

@@ -4,9 +4,7 @@
 	<div class="row">
 		<div class="col-2" style="background-color:#e7e4db">
 			<div>
-				<h3>
-					Aqui van los filtros
-				</h3>
+				 <%= button_to "Crear", new_dog_path, :class => "btn btn-active", :method => :get %>
 			</div>
 		</div>	
 		<div class="col-10" style="background-color:#babec4">
@@ -19,8 +17,11 @@
 								<img src="" width="200px" height="200px">
 							</div>
 							<div class="col-10">
-								<div style="padding-left: 5%;padding-top: 2%">
-									<h4><%= dog.name%></h4>
+								<div style="padding-left: 5%;padding-top: 2%;">
+									<div>
+									<h4 style="display: inline;"><%= dog.name%></h4>
+									<div>X</div>
+									</div>
 									<p><%= dog.birth_date%></p>
 									<p><%= dog.description%></p>
 								</div>
