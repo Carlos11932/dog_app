@@ -3,8 +3,8 @@
 	<div class="container" style="background-color: #e7e4db; padding: 1%">
 		<%= render partial: "./partials/nav_bar" %>
 		<% if @dog.publisher_id == session[:current_user_name] %>
-			boton borrar
-			boton editar
+			<%= button_to "Eliminar", destroy_dog_path(@dog.id), :class => "btn btn-active", :method => :delete %>
+			<%= button_to "Editar", edit_dog_path(@dog.id), :class => "btn btn-active", :method => :get %>
 		<% end %>
 		<h1 style="text-align: center; color: #474747;"><%= @dog.name%></h1>
 		<div class="row" style="padding-top: 2%">

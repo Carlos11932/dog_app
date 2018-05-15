@@ -3,7 +3,7 @@ class DogsController < ApplicationController
 	before_action :check_log_in
 
 	def all_dogs 
-		@dogs = Dog.where.not(adopter_id: nil)
+		@dogs = Dog.where(adopter_id: nil)
 	end
 
 	def show_dog
@@ -22,12 +22,14 @@ class DogsController < ApplicationController
 
 	def create_dog
 		@dog = Dog.new(dog_params)
+		@dog.publisher_id = session[:current_user_name]
+			binding.pry
     		if @dog.save
       			flash[:success] = "Nuevo miembro en el equipo"
       			redirect_to my_dogs_path(session[:current_user_name])
     		else
-      			redirect_to my_dogs_path(session[:current_user_name])
-    		end
+      			redirect_to list_all_dogs_path
+      		end	
 	end
 
 	def edit_dog
@@ -47,7 +49,7 @@ class DogsController < ApplicationController
 	def destroy_dog
 		@dog = Dog.find(params[:id])
     	@dog.destroy
-    	redirect_to redirect_to my_dogs_path(session[:current_user_name]), :notice => "Perfil eliminado"
+    	redirect_to my_dogs_path(session[:current_user_name]), :notice => "Perfil eliminado"
 	end
 
 	private
