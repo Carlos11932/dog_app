@@ -83,25 +83,13 @@ function get_dog_map() {
 	var lng = $("#lng_id").val()
 	var lat = $("#lat_id").val()
 	var google_api_key = 'AIzaSyCco2s5skJ5_l7uB4vpIHfCYEtrJu7dE5I'
-
-
-	$.ajax({
-    url: 'https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=12&size=400x400&maptype=roadmap&key='+google_api_key,
-	    success: function(data) {
-			$("#google_map").attr('src', data)
-	    },
-	    error: function() {
-	        console.log("No se ha podido obtener la información");
-	    }
-	});
+	var url = 'https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=12&size=400x400&maptype=roadmap&key='+google_api_key
+	$("#google_map").html(
+				'<img src='+url+'>'
+				)
 }
 
 
-
-function print_map(data){
-	console.log(data)
-
-}
 
 
 

@@ -5,34 +5,62 @@
 			confirmar?
 		</div>	
 		<div class="col-10" style="background-color:#babec4">
-			<%= form_for :dog, method: :post, url: create_dog_path do |f| %>
-			  <%= f.label :name %>:
-			  <%= f.text_field :name %><br />
+			<div class="col-4">
+				<%= form_for :dog, method: :post, url: create_dog_path do |f| %>
+				 	<div class="form-group">
+					    <%= f.label :name %>:
+					  	<%= f.text_field :name, class: "form-control" %>
+				  	</div>
+				  	<div class="form-group">
+				  		<%= f.label :breed %>:
+				  		<%= f.select :breed, ['Rottweiler', 'Pastor alemán', 'Boxer', 'Yorkshire Terrier', 'Pointer'], {}, {class: "form-control"} %>
+					</div>
+				  	<div class="form-group">
+				  		<%= f.label :breed %>:
+				  		<%= f.select :breed, ['Rottweiler', 'Pastor alemán', 'Boxer', 'Yorkshire Terrier', 'Pointer'], {}, {class: "form-control"} %>
+					</div>
+					<div class="form-group">
+						<%= f.label :gender %>:
+						<div class="form-check">
+						  	<%= f.radio_button :gender, 'male', {checked: true, class: "form-check-input"} %> 
+						  	<%= label :gender_male, 'male', {class: "form-check-label"} %>
+						</div>
+						<div class="form-check">
+						  	<%= f.radio_button :gender, 'female', {class: "form-check-input"} %>
+						  	<%= label :gender_female, 'female', {class: "form-check-label"} %>
+						</div>
+					</div>
+				 	<div class="form-group">
+					    <%= f.label :birth_date %>:
+					  	<%= f.date_field :birth_date, class: "form-control" %>
+				  	</div>
+				 	<div class="form-group">
+					    <%= f.label :description %>:
+					  	<%= f.text_area :description, class: "form-control" %>
+				  	</div>
 
-			  <%= f.label :breed %>:
-			  <%= f.text_field :breed %><br />
+				  	<%= f.hidden_field :location_lat, :id => 'lat_id' %>
 
-			  <%= f.label :gender %>:
-			  <%= f.radio_button :gender, 'male', :checked => true %> 
-			  <%= label :gender_male, 'male' %>
-			  <%= f.radio_button :gender, 'female' %>
-			  <%= label :gender_female, 'female' %><br />
+				  	<%= f.hidden_field :location_lng, :id => 'lng_id' %>
 
-			  <%= f.label :birth_date %>:
-			  <%= f.date_field :birth_date %><br />
+				  	  <div>
+					  	
+					  <label for="get_dog_direction">Direccion: </label>
+					  <input type="text" name="get_dog_direction" id="get_dog_direction" placeholder="Calle">
 
-			  <%= f.label :description %>:
-			  <%= f.text_area :description %><br />
+					  <label for="get_dog_city">Ciudad: </label>
+					  <input type="text" name="get_dog_city" id="get_dog_city" placeholder="Ciudad">
 
-			  <%= f.label :location_lat %>:
-			  <%= f.text_field :location_lat %><br />
+					  <label for="get_dog_country">Pais: </label>
+					  <input type="text" name="get_dog_country" id="get_dog_country" placeholder="Pais">
 
-			  <%= f.label :location_lng %>:
-			  <%= f.text_field :location_lng %><br />
+					  <button id="get_dog_direction_button" onclick="get_dog_direction_query()" style="display: inline-flex;">Actualizar</button> 
 
-			  <%= f.submit %>
-			<% end %>
+
+	   		      	</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
-	{name: 'Pirata', birth_date: Date.new(2010, 1, 20), breed: 'Rottweiler', gender: 0, location_lat: 40.40, location_lng: -3.61, description:'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.', adopter: user1, publisher: user2},
+

@@ -4,48 +4,71 @@
 		<div class="col-2" style="background-color:#e7e4db">
 			confirmar?
 			
-		  	  <label for="get_dog_direction">Direccion: </label>
-			  <input type="text" name="get_dog_direction" id="get_dog_direction" placeholder="Calle">
+		  	  
 
-			  <label for="get_dog_city">Ciudad: </label>
-			  <input type="text" name="get_dog_city" id="get_dog_city" placeholder="Ciudad">
 
-			  <label for="get_dog_country">Pais: </label>
-			  <input type="text" name="get_dog_country" id="get_dog_country" placeholder="Pais">
-
-   		      <button id="get_dog_direction_button" onclick="get_dog_direction_query()">Buscar</button> 
 		</div>	
 		<div class="col-10" style="background-color:#babec4">
-			<%= form_for @dog, method: :put, url: update_dog_path(@dog.id) do |f| %>
-			  <%= f.label :name %>:
-			  <%= f.text_field :name %><br />
+			<div class="col-4">
+				<%= form_for @dog, method: :put, url: update_dog_path(@dog.id) do |f| %>
+				 	<div class="form-group">
+					    <%= f.label :name %>:
+					  	<%= f.text_field :name, class: "form-control" %>
+				  	</div>
+				  	<div class="form-group">
+				  		<%= f.label :breed %>:
+				  		<%= f.select :breed, ['Rottweiler', 'Pastor alemán', 'Boxer', 'Yorkshire Terrier', 'Pointer'], {}, {class: "form-control"} %>
+					</div>
+				  	<div class="form-group">
+				  		<%= f.label :breed %>:
+				  		<%= f.select :breed, ['Rottweiler', 'Pastor alemán', 'Boxer', 'Yorkshire Terrier', 'Pointer'], {}, {class: "form-control"} %>
+					</div>
+					<div class="form-group">
+						<%= f.label :gender %>:
+						<div class="form-check">
+						  	<%= f.radio_button :gender, 'male', {checked: true, class: "form-check-input"} %> 
+						  	<%= label :gender_male, 'male', {class: "form-check-label"} %>
+						</div>
+						<div class="form-check">
+						  	<%= f.radio_button :gender, 'female', {class: "form-check-input"} %>
+						  	<%= label :gender_female, 'female', {class: "form-check-label"} %>
+						</div>
+					</div>
+				 	<div class="form-group">
+					    <%= f.label :birth_date %>:
+					  	<%= f.date_field :birth_date, class: "form-control" %>
+				  	</div>
+				 	<div class="form-group">
+					    <%= f.label :description %>:
+					  	<%= f.text_area :description, class: "form-control" %>
+				  	</div>
 
-			  <%= f.label :breed %>:
-			  <%= f.text_field :breed %><br />
+				  	<%= f.hidden_field :location_lat, :id => 'lat_id' %>
 
-			  <%= f.label :gender %>:
-			  <%= f.radio_button :gender, 'male', :checked => true %> 
-			  <%= label :gender_male, 'male' %>
-			  <%= f.radio_button :gender, 'female' %>
-			  <%= label :gender_female, 'female' %><br />
+				  	<%= f.hidden_field :location_lng, :id => 'lng_id' %>
 
-			  <%= f.label :birth_date %>:
-			  <%= f.date_field :birth_date %><br />
+					  <div>
+				  	
+				  <label for="get_dog_direction">Direccion: </label>
+				  <input type="text" name="get_dog_direction" id="get_dog_direction" placeholder="Calle">
 
-			  <%= f.label :description %>:
-			  <%= f.text_area :description %><br />
+				  <label for="get_dog_city">Ciudad: </label>
+				  <input type="text" name="get_dog_city" id="get_dog_city" placeholder="Ciudad">
+
+				  <label for="get_dog_country">Pais: </label>
+				  <input type="text" name="get_dog_country" id="get_dog_country" placeholder="Pais">
+
+				  <button id="get_dog_direction_button" onclick="get_dog_direction_query()" style="display: inline-flex;">Actualizar</button> 
 
 
-   		      <img src="" id="google_map">
+   		      	</div>
 
-			  <%= f.hidden_field :location_lat, :id => 'lat_id' %><br />
 
-			  <%= f.hidden_field :location_lng, :id => 'lng_id' %><br />
-
+				  <% end %>
+			  </div>
 		
-
-			  <%= f.submit %>
-			<% end %>
+		<form>
+   	
 		</div>
 	</div>
 </div>

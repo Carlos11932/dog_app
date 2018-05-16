@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
 			get 'dogs', to: 'dogs#dogs_filter'
 			get 'dogs/location', to: 'dogs#google_maps_api_query'
-			get 'dogs/map', to: 'dogs#google_maps_api_get_map_query'
 
 
 		

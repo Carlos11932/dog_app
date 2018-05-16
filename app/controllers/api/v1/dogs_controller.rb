@@ -4,7 +4,7 @@ class Api::V1::DogsController < ApplicationController
 
 
 	def dogs_filter
-		dogs = Dog.all
+		dogs = Dog.where(adopter_id: nil)
 		breed = params[:breed]
 		if(breed.present?)
 			dogs = dogs.select do |dog|
@@ -25,14 +25,5 @@ class Api::V1::DogsController < ApplicationController
 	end
 	
 
-	def google_maps_api_get_map_query
-		binding.pry
-		google_api_key = 'AIzaSyCco2s5skJ5_l7uB4vpIHfCYEtrJu7dE5I'
-		coord = params['coord']
-
-		response = HTTParty.get('https://maps.googleapis.com/maps/api/staticmap?center='+coord+'&zoom=12&size=400x400&maptype=roadmap&key='+google_api_key)
-		
-		render json: response
-	end	
 
 end	
