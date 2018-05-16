@@ -1,5 +1,4 @@
 <div style="height: 500px; background-color: gray">
-	<h1>HOLA</h1>
 	<%= form_for :user, url: {controller: 'users', action: 'sign_in'} do |f| %>
 		<%=  f.label :user_name %>
 		<%= f.text_field :user_name, class: 'form-control' %>

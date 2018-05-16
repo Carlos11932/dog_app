@@ -45,12 +45,15 @@ function print_with_filter(data){
 }
 
 
-function get_dog_direction_query() {
+function get_dog_direction_query(event) {
+	console.log(event);
+	event.preventDefault();
+
 	var adress = $("#get_dog_direction").val()
 	if(adress == ""){
 		return
 	}
-	var country = $("#get_dog_country").val()
+	var country = "Spain"
 	var city = $("#get_dog_city").val()	
 	var adress = $("#get_dog_direction").val()
 	var direction = adress+'+'+city+'+'+country
@@ -83,7 +86,7 @@ function get_dog_map() {
 	var lng = $("#lng_id").val()
 	var lat = $("#lat_id").val()
 	var google_api_key = 'AIzaSyCco2s5skJ5_l7uB4vpIHfCYEtrJu7dE5I'
-	var url = 'https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=12&size=400x400&maptype=roadmap&key='+google_api_key
+	var url = 'https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=13&size=400x400&maptype=roadmap&key='+google_api_key
 	$("#google_map").html(
 				'<img src='+url+'>'
 				)

@@ -3,22 +3,26 @@
 	<div class="container" style="background-color: #e7e4db; padding: 1%">
 		<%= render partial: "./partials/nav_bar" %>
 		<% if @dog.publisher_id == session[:current_user_name] %>
-			<%= button_to "Eliminar", destroy_dog_path(@dog.id), :class => "btn btn-active", :method => :delete %>
-			<%= button_to "Editar", edit_dog_path(@dog.id), :class => "btn btn-active", :method => :get %>
+			<%= button_to "Eliminar", destroy_dog_path(@dog.id), {class: "btn btn-danger ml-1 float-right", method: :delete} %>
+			<%= button_to "Editar", edit_dog_path(@dog.id), {class:  "btn btn-primary ml-1 float-right", method: :get} %>
 
 		<% end %>
 
 		<% if @dog.adopter_id == nil%>
-			<%= button_to "Adoptar", adopt_dog_path(@dog.id), :class => "btn btn-active", :method => :put %>
+			<%= button_to "Adoptar", adopt_dog_path(@dog.id), {class:  "btn btn-success ml-1 float-right", method: :put} %>
 		<% end %>
 
 		<h1 style="text-align: center; color: #474747;"><%= @dog.name%></h1>
 		<div class="row" style="padding-top: 2%">
 			<div class="col-1">
-				hola
+				
 			</div>
 			<div class="col-3">
-				<img src="" width="200px" height="200px">
+				<% if @dog.image.attached? %>
+				    <%= image_tag @dog.image, {class: "image_dog"} %>
+				<% else %>
+					<%=image_tag "missing.jpg", {class: "image_dog"} %>
+				<% end %>
 			</div>
 			<div class="col-8">
 				<p><%= @dog.birth_date%></p>
@@ -30,11 +34,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-1">
-				hola
-			</div>
+			
 			<div class="col-3">
-				location
+				<%= image_tag @dog_map_url %>
 			</div>
 			<div class="col-8">
 				<h4 style="text-align: right; padding-top: 20%"> Contacto: <%= @publisher.name%></h4>
