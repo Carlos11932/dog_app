@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	post 'dogs', to: 'dogs#create_dog', as: 'create_dog'
 	delete 'dogs/:id', to: 'dogs#destroy_dog', as: 'destroy_dog'
 	put 'dogs/:id', to: 'dogs#update_dog', as: 'update_dog'
+	put 'dogs/adopt/:id', to: 'dogs#adopt_dog', as: 'adopt_dog'
 
 	#api 
 	namespace :api do

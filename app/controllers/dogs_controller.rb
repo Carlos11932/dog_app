@@ -52,6 +52,13 @@ class DogsController < ApplicationController
     	redirect_to my_dogs_path(session[:current_user_name]), :notice => "Perfil eliminado"
 	end
 
+	def adopt_dog
+		dog = Dog.find(params[:id])
+		dog.adopter_id = session[:current_user_name]
+		dog.save
+		redirect_to my_dogs_path(session[:current_user_name])
+	end
+
 	private
 
 		def check_log_in

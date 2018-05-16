@@ -4,8 +4,14 @@
 		<%= render partial: "./partials/nav_bar" %>
 		<% if @dog.publisher_id == session[:current_user_name] %>
 			<%= button_to "Eliminar", destroy_dog_path(@dog.id), :class => "btn btn-active", :method => :delete %>
-			<%= button_to "Editar", edit_dog_path(@dog.id), :class => "btn btn-active", :method => :get %>
+			<%= button_to "Editar", edit_dog_path(@dog.id), :class => "btn btn-active", :method => :put %>
+
 		<% end %>
+
+		<% if @dog.adopter_id == nil%>
+			<%= button_to "Adoptar", adopt_dog_path(@dog.id), :class => "btn btn-active", :method => :put %>
+		<% end %>
+
 		<h1 style="text-align: center; color: #474747;"><%= @dog.name%></h1>
 		<div class="row" style="padding-top: 2%">
 			<div class="col-1">
